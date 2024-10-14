@@ -19,10 +19,9 @@ app.use('/', Routes);
 
 const PORT = process.env.PORT;
 
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
+const URL = process.env.MONGODB_URI;
 
-Connection(username, password);
+Connection(URL);
 
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 DefaultData();
