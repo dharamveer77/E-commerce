@@ -17,7 +17,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', Routes);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 const URL = process.env.MONGODB_URI;
 
