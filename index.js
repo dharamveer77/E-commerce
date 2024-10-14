@@ -8,13 +8,13 @@ import Connection from './database/db.js';
 import DefaultData from './default.js';
 import Routes from './routes/route.js';
 
-
-dotenv.config();
 const app = express();
 
+dotenv.config();
+
+app.use(cors());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use('/', Routes);
 
 const PORT = process.env.PORT || 8000;
