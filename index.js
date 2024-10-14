@@ -23,7 +23,23 @@ const URL = process.env.MONGODB_URI;
 
 Connection(URL);
 
-app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Example API route: /products
+app.get('/products', (req, res) => {
+  res.json({ message: "Here are your products!" });
+});
+
+// Catch-all route for React app (single-page application)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Start the server (this is mainly for local dev, Vercel will use the serverless function)
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
 DefaultData();
 
 
