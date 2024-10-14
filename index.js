@@ -23,6 +23,7 @@ const URL = process.env.MONGODB_URI;
 
 Connection(URL);
 
+app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 DefaultData();
 
 
