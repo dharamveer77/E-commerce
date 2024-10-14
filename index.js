@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -23,23 +22,6 @@ app.use('/', Routes);
 const URL = process.env.MONGODB_URI;
 
 Connection(URL);
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-// Example API route: /products
-app.get('/products', (req, res) => {
-  res.json({ message: "Here are your products!" });
-});
-
-// Catch-all route for React app (single-page application)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-// Start the server (this is mainly for local dev, Vercel will use the serverless function)
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
 DefaultData();
 
